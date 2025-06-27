@@ -1,5 +1,9 @@
 # 🔐 Laboratório Prático: AWS Security Token Service (STS)
 
+![1](https://raw.githubusercontent.com/HalleyVeras/aws-STS-lab-developer-EDN/refs/heads/main/arquivos/CREATE%7E1.JPG)
+
+**Autor:** Halley Veras  
+**Curso: Developer – Escola da Nuvem** 
 > Um mergulho prático no mundo das **credenciais temporárias na AWS**. Assuma roles, valide acessos, simule expiração e **surpreenda-se com o poder do STS**!
 
 ---
@@ -42,7 +46,13 @@ python3 -c "import boto3; print(boto3.__version__)"
 ```
 ---
 
-🖼️ [Insira aqui um print do CloudShell aberto com boto3 instalado]
+![1](https://raw.githubusercontent.com/HalleyVeras/aws-STS-lab-developer-EDN/refs/heads/main/arquivos/2025-06-26_15-12.png)
+![1](https://raw.githubusercontent.com/HalleyVeras/aws-STS-lab-developer-EDN/refs/heads/main/arquivos/2025-06-26_15-15.png)
+![1](https://raw.githubusercontent.com/HalleyVeras/aws-STS-lab-developer-EDN/refs/heads/main/arquivos/2025-06-26_15-15_1.png)
+![1](https://raw.githubusercontent.com/HalleyVeras/aws-STS-lab-developer-EDN/refs/heads/main/arquivos/2025-06-26_15-16.png)
+![1](https://raw.githubusercontent.com/HalleyVeras/aws-STS-lab-developer-EDN/refs/heads/main/arquivos/2025-06-26_15-16_1.png)
+![1](https://raw.githubusercontent.com/HalleyVeras/aws-STS-lab-developer-EDN/refs/heads/main/arquivos/2025-06-26_15-17.png)
+![1](https://raw.githubusercontent.com/HalleyVeras/aws-STS-lab-developer-EDN/refs/heads/main/arquivos/2025-06-26_15-19.png)
 
 🔐 Passo 2: Criando a Role Temporária
 Vá até IAM > Funções > Criar função
@@ -55,7 +65,20 @@ Conceda a política AmazonS3FullAccess
 
 Nomeie como SeuNomeRole
 
-🖼️ [Insira print da configuração da Role]
+![1](https://raw.githubusercontent.com/HalleyVeras/aws-STS-lab-developer-EDN/refs/heads/main/arquivos/2025-06-26_15-20.png)
+![1](https://raw.githubusercontent.com/HalleyVeras/aws-STS-lab-developer-EDN/refs/heads/main/arquivos/2025-06-26_15-21.png)
+![1](https://raw.githubusercontent.com/HalleyVeras/aws-STS-lab-developer-EDN/refs/heads/main/arquivos/2025-06-26_15-21_1.png)
+![1](https://raw.githubusercontent.com/HalleyVeras/aws-STS-lab-developer-EDN/refs/heads/main/arquivos/2025-06-26_15-29.png)
+![1](https://raw.githubusercontent.com/HalleyVeras/aws-STS-lab-developer-EDN/refs/heads/main/arquivos/2025-06-26_15-30.png)
+![1](https://raw.githubusercontent.com/HalleyVeras/aws-STS-lab-developer-EDN/refs/heads/main/arquivos/2025-06-26_15-32.png)
+![1](https://raw.githubusercontent.com/HalleyVeras/aws-STS-lab-developer-EDN/refs/heads/main/arquivos/2025-06-26_15-32_1.png)
+![1](https://raw.githubusercontent.com/HalleyVeras/aws-STS-lab-developer-EDN/refs/heads/main/arquivos/2025-06-26_15-33.png)
+![1](https://raw.githubusercontent.com/HalleyVeras/aws-STS-lab-developer-EDN/refs/heads/main/arquivos/2025-06-26_15-34.png)
+![1](https://raw.githubusercontent.com/HalleyVeras/aws-STS-lab-developer-EDN/refs/heads/main/arquivos/2025-06-26_15-35_1.png)
+![1](https://raw.githubusercontent.com/HalleyVeras/aws-STS-lab-developer-EDN/refs/heads/main/arquivos/2025-06-26_15-36.png)
+![1](https://raw.githubusercontent.com/HalleyVeras/aws-STS-lab-developer-EDN/refs/heads/main/arquivos/2025-06-26_15-37.png)
+![1](https://raw.githubusercontent.com/HalleyVeras/aws-STS-lab-developer-EDN/refs/heads/main/arquivos/2025-06-26_15-37_1.png)
+![1](https://raw.githubusercontent.com/HalleyVeras/aws-STS-lab-developer-EDN/refs/heads/main/arquivos/2025-06-26_15-37_2.png)
 
 
 🔄 Passo 3: Alternando para a Role
@@ -65,18 +88,30 @@ Insira o ID da conta, SeuNomeRole e uma cor para diferenciar
 
 Valide que você tem acesso ao S3 e não ao Lambda
 
+![1](https://raw.githubusercontent.com/HalleyVeras/aws-STS-lab-developer-EDN/refs/heads/main/arquivos/2025-06-26_15-39.png)
+![1](https://raw.githubusercontent.com/HalleyVeras/aws-STS-lab-developer-EDN/refs/heads/main/arquivos/2025-06-26_15-42.png)
+![1](https://raw.githubusercontent.com/HalleyVeras/aws-STS-lab-developer-EDN/refs/heads/main/arquivos/2025-06-26_15-44.png)
+![1](https://raw.githubusercontent.com/HalleyVeras/aws-STS-lab-developer-EDN/refs/heads/main/arquivos/2025-06-26_15-44_1.png)
+![1](https://raw.githubusercontent.com/HalleyVeras/aws-STS-lab-developer-EDN/refs/heads/main/arquivos/2025-06-26_15-45.png)
+![1](https://raw.githubusercontent.com/HalleyVeras/aws-STS-lab-developer-EDN/refs/heads/main/arquivos/2025-06-26_15-47.png)
+![1](https://raw.githubusercontent.com/HalleyVeras/aws-STS-lab-developer-EDN/refs/heads/main/arquivos/2025-06-26_15-37_2.png)
 
 ```bash
 aws sts get-caller-identity
 ```
-🖼️ [Print com tela colorida indicando que está com a Role ativa]
+![1](https://raw.githubusercontent.com/HalleyVeras/aws-STS-lab-developer-EDN/refs/heads/main/arquivos/2025-06-26_16-26.png)
 
 🐍 Passo 4: Executar o Script Python
 📥 Baixe o script: credenciais_temporarias.py
 
 # Faça upload para o CloudShell
-ls
+![1](https://raw.githubusercontent.com/HalleyVeras/aws-STS-lab-developer-EDN/refs/heads/main/arquivos/2025-06-26_16-31.png)
+![1](https://raw.githubusercontent.com/HalleyVeras/aws-STS-lab-developer-EDN/refs/heads/main/arquivos/2025-06-26_16-31_1.png)
 
+
+```bash
+ls
+```
 # Execute com duração inválida (erro esperado)
 python3 credenciais_temporarias.py --role-arn arn:aws:iam::<SEU_ID>:role/SeuNomeRole --session-name Teste --duration 7200
 
