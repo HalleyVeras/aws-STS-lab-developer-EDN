@@ -113,10 +113,20 @@ aws sts get-caller-identity
 ls
 ```
 # Execute com duração inválida (erro esperado)
+```
 python3 credenciais_temporarias.py --role-arn arn:aws:iam::<SEU_ID>:role/SeuNomeRole --session-name Teste --duration 7200
+```
 
+```
 # Execute com duração válida
-python3 credenciais_temporarias.py --role-arn arn:aws:iam::<SEU_ID>:role/SeuNomeRole --session-name Teste --duration 3600
+python3 credenciais_temporarias.py --role-arn arn:aws:iam::<SEU_ID>:role/SeuNomeRole --session-name Teste --duration 3000
+```
+![1](https://raw.githubusercontent.com/HalleyVeras/aws-STS-lab-developer-EDN/refs/heads/main/arquivos/2025-06-26_16-33.png)
+![1](https://raw.githubusercontent.com/HalleyVeras/aws-STS-lab-developer-EDN/refs/heads/main/arquivos/2025-06-26_16-44.png)
+![1](https://raw.githubusercontent.com/HalleyVeras/aws-STS-lab-developer-EDN/refs/heads/main/arquivos/2025-06-26_19-50.png)
+![1](https://raw.githubusercontent.com/HalleyVeras/aws-STS-lab-developer-EDN/refs/heads/main/arquivos/2025-06-26_19-53.png)
+![1](https://raw.githubusercontent.com/HalleyVeras/aws-STS-lab-developer-EDN/refs/heads/main/arquivos/2025-06-26_19-58.png)
+
 
 
 🔐 Passo 5: Configurar AWS CLI com as Credenciais Temporárias
@@ -138,6 +148,9 @@ aws_session_token = SEU_SESSION_TOKEN
 
 cat ~/.aws/credentials
 ```
+![1](https://raw.githubusercontent.com/HalleyVeras/aws-STS-lab-developer-EDN/refs/heads/main/arquivos/2025-06-26_20-19.png)
+![1](https://raw.githubusercontent.com/HalleyVeras/aws-STS-lab-developer-EDN/refs/heads/main/arquivos/2025-06-26_20-24.png)
+
 
 ✅ Teste novamente:
 ```
@@ -148,40 +161,19 @@ aws s3 ls
 aws sts get-caller-identity
 aws lambda list-functions  # Deve retornar acesso negado
 ```
+![1](https://raw.githubusercontent.com/HalleyVeras/aws-STS-lab-developer-EDN/refs/heads/main/arquivos/2025-06-26_20-24_1.png)
+![1](https://raw.githubusercontent.com/HalleyVeras/aws-STS-lab-developer-EDN/refs/heads/main/arquivos/2025-06-26_20-25.png)
+![1](https://raw.githubusercontent.com/HalleyVeras/aws-STS-lab-developer-EDN/refs/heads/main/arquivos/2025-06-26_20-26.png)
 
 ⏰ Passo 8: Simular Expiração
 Espere 1 hora ou use uptime para verificar. Após isso:
 
 ```
-aws s3 ls  # Erro de credencial expirada
+uptime
 ```
+![1](https://raw.githubusercontent.com/HalleyVeras/aws-STS-lab-developer-EDN/refs/heads/main/arquivos/2025-06-26_20-26_1.png)
 
-🧼 Passo 9: Restaurar Credenciais Originais
-
-```
-sudo nano ~/.aws/credentials  # Comente as linhas temporárias
-sudo nano ~/.aws/config       # Comente as linhas de região/output
-
-```
-Valide identidade:
-
-
-```
-aws sts get-caller-identity
-
-
-```
-
-
-🛡️ Passo 10 a 13: Teste com Política de Confiança Modificada
-Vá até a Role > Aba Relações de Confiança
-
-Altere a política para incluir o ARN de outra role
-
-Reexecute o script Python: Você verá um erro de acesso negado
-
-🖼️ [Print com erro após alteração da política]
-
+## 🎉 Conclusão
 
 
 
